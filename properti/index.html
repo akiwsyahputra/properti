@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenVille Estate - Hunian Impian Keluarga Modern</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .transition-custom {
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2C5F2D',
+                        secondary: '#97BC62',
+                        accent: '#FFD700',
+                        dark: '#1E3A1E',
+                        light: '#F9F9F9'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-light">
+    <!-- Header & Navbar -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="text-primary font-bold text-2xl">GreenVille</div>
+                <div class="text-secondary font-light text-xl">Estate</div>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-primary font-medium hover:text-secondary transition-custom">Beranda</a>
+                <a href="properties.html" class="text-gray-600 hover:text-primary transition-custom">Properti</a>
+                <a href="about.html" class="text-gray-600 hover:text-primary transition-custom">Tentang Kami</a>
+                <a href="contact.html" class="text-gray-600 hover:text-primary transition-custom">Kontak</a>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="hidden md:block">
+                <a href="contact.html" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition-custom">Hubungi Kami</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-primary transition-custom">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white pb-4 px-4">
+            <div class="flex flex-col space-y-3">
+                <a href="index.html" class="text-primary font-medium py-2 border-b border-gray-100">Beranda</a>
+                <a href="properties.html" class="text-gray-600 hover:text-primary py-2 border-b border-gray-100">Properti</a>
+                <a href="about.html" class="text-gray-600 hover:text-primary py-2 border-b border-gray-100">Tentang Kami</a>
+                <a href="contact.html" class="text-gray-600 hover:text-primary py-2">Kontak</a>
+                <a href="contact.html" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition-custom text-center mt-2">Hubungi Kami</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="relative container mx-auto px-4 h-full flex items-center">
+            <div class="max-w-2xl text-white">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-shadow">Temukan Hunian Impian Keluarga Anda</h1>
+                <p class="text-xl mb-8">Properti eksklusif dengan lingkungan asri, aman, dan nyaman untuk keluarga modern.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="properties.html" class="bg-primary text-white px-8 py-3 rounded-full hover:bg-secondary transition-custom text-center font-medium">Lihat Properti</a>
+                    <a href="#virtual-tour" class="bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-100 transition-custom text-center font-medium">Virtual Tour</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Property Search Box -->
+        <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-lg transform translate-y-1/2 mx-4 lg:mx-auto lg:max-w-4xl">
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-primary mb-4">Cari Properti Impian</h3>
+                <form class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tipe Properti</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                            <option>Semua Tipe</option>
+                            <option>Rumah</option>
+                            <option>Apartemen</option>
+                            <option>Villa</option>
+                            <option>Tanah</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Rentang Harga</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                            <option>Semua Harga</option>
+                            <option>< Rp500 Juta</option>
+                            <option>Rp500 Juta - Rp1 Miliar</option>
+                            <option>Rp1 Miliar - Rp2 Miliar</option>
+                            <option>> Rp2 Miliar</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Lokasi</label>
+                        <div class="relative">
+                            <input type="text" placeholder="Masukkan lokasi" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary pr-10">
+                            <button type="submit" class="absolute right-2 top-2 bg-primary text-white p-1 rounded-lg hover:bg-secondary transition-custom">
+                                <i class="fas fa-search p-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section class="pt-32 pb-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-primary mb-2">Properti Unggulan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Pilihan properti terbaik dengan lokasi strategis, fasilitas lengkap, dan desain modern untuk keluarga Anda</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Property Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1775&q=80" alt="Rumah Modern Minimalis" class="w-full h-64 object-cover group-hover:scale-105 transition-custom">
+                        <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">Dijual</div>
+                        <div class="absolute top-4 right-4 bg-white bg-opacity-90 text-primary px-3 py-1 rounded-full text-sm font-medium">Rumah</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-primary transition-custom">Rumah Modern Minimalis</h3>
+                        <p class="text-gray-600 mb-4">Jl. Harmoni Indah No. 28, Jakarta Selatan</p>
+                        <div class="flex justify-between mb-4">
+                            <span class="text-primary font-bold text-xl">Rp1.2 Miliar</span>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-accent"></i>
+                                <span class="ml-1 text-gray-700">4.8</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-gray-600 border-t pt-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed mr-2"></i>
+                                <span>3 Kamar</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-bath mr-2"></i>
+                                <span>2 Kamar Mandi</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-ruler-combined mr-2"></i>
+                                <span>150 m²</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="property-detail.html" class="block bg-gray-100 text-center py-3 text-primary font-medium hover:bg-primary hover:text-white transition-custom">Lihat Detail</a>
+                </div>
+                
+                <!-- Property Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Villa Mewah dengan Kolam Renang" class="w-full h-64 object-cover group-hover:scale-105 transition-custom">
+                        <div class="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">Premium</div>
+                        <div class="absolute top-4 right-4 bg-white bg-opacity-90 text-primary px-3 py-1 rounded-full text-sm font-medium">Villa</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-primary transition-custom">Villa Mewah dengan Kolam Renang</h3>
+                        <p class="text-gray-600 mb-4">Jl. Puncak Sejahtera No. 15, Bogor</p>
+                        <div class="flex justify-between mb-4">
+                            <span class="text-primary font-bold text-xl">Rp3.5 Miliar</span>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-accent"></i>
+                                <span class="ml-1 text-gray-700">4.9</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-gray-600 border-t pt-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed mr-2"></i>
+                                <span>5 Kamar</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-bath mr-2"></i>
+                                <span>4 Kamar Mandi</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-ruler-combined mr-2"></i>
+                                <span>350 m²</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="property-detail.html" class="block bg-gray-100 text-center py-3 text-primary font-medium hover:bg-primary hover:text-white transition-custom">Lihat Detail</a>
+                </div>
+                
+                <!-- Property Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Apartemen Mewah" class="w-full h-64 object-cover group-hover:scale-105 transition-custom">
+                        <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">Dijual</div>
+                        <div class="absolute top-4 right-4 bg-white bg-opacity-90 text-primary px-3 py-1 rounded-full text-sm font-medium">Apartemen</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-primary transition-custom">Apartemen Mewah</h3>
+                        <p class="text-gray-600 mb-4">Jl. Sudirman Central No. 45, Jakarta Pusat</p>
+                        <div class="flex justify-between mb-4">
+                            <span class="text-primary font-bold text-xl">Rp2.8 Miliar</span>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-accent"></i>
+                                <span class="ml-1 text-gray-700">4.7</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-gray-600 border-t pt-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed mr-2"></i>
+                                <span>2 Kamar</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-bath mr-2"></i>
+                                <span>2 Kamar Mandi</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-ruler-combined mr-2"></i>
+                                <span>120 m²</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="property-detail.html" class="block bg-gray-100 text-center py-3 text-primary font-medium hover:bg-primary hover:text-white transition-custom">Lihat Detail</a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="properties.html" class="inline-block border-2 border-primary text-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-custom font-medium">Lihat Semua Properti</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-primary mb-2">Mengapa Memilih Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">GreenVille Estate menawarkan pengalaman terbaik dalam mencari dan membeli properti impian Anda</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-custom text-center">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-home text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Properti Berkualitas</h3>
+                    <p class="text-gray-600">Semua properti kami melewati proses seleksi ketat untuk memastikan kualitas terbaik</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-custom text-center">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Legalitas Terjamin</h3>
+                    <p class="text-gray-600">Semua properti memiliki dokumen legal yang lengkap dan terjamin keabsahannya</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-custom text-center">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hand-holding-usd text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Harga Terbaik</h3>
+                    <p class="text-gray-600">Kami menawarkan harga yang kompetitif dengan nilai investasi yang terus meningkat</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-custom text-center">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Layanan 24/7</h3>
+                    <p class="text-gray-600">Tim kami siap membantu Anda kapan saja dengan layanan pelanggan yang responsif</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour Section -->
+    <section id="virtual-tour" class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-8 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl font-bold text-primary mb-4">Jelajahi Properti Secara Virtual</h2>
+                    <p class="text-gray-600 mb-6">Nikmati pengalaman menjelajahi properti impian Anda dari kenyamanan rumah. Virtual tour kami memberikan tampilan 360° yang detail dari setiap sudut properti.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span class="text-gray-700">Tampilan 360° dari setiap ruangan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span class="text-gray-700">Informasi detail tentang material dan finishing</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span class="text-gray-700">Eksplorasi lingkungan sekitar properti</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span class="text-gray-700">Simulasi pencahayaan siang dan malam</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-block bg-primary text-white px-8 py-3 rounded-full hover:bg-secondary transition-custom font-medium">Mulai Virtual Tour</a>
+                </div>
+                <div class="lg:w-1/2 relative">
+                    <img src="https://images.unsplash.com/photo-1558442074-3c19857bc1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Virtual Tour" class="rounded-xl shadow-lg w-full">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <a href="#" class="bg-white bg-opacity-90 w-16 h-16 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-custom">
+                            <i class="fas fa-play text-primary hover:text-white text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-primary mb-2">Apa Kata Mereka</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Dengarkan pengalaman dari klien yang telah menemukan hunian impian mereka bersama kami</p>
+            </div>
+            
+            <div class="testimonial-slider overflow-hidden relative">
+                <div class="testimonial-wrapper flex transition-transform duration-500" id="testimonialWrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="text-accent">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="ml-auto text-gray-400 text-sm">1 bulan yang lalu</div>
+                            </div>
+                            <p class="text-gray-600 mb-6">"Proses pembelian rumah bersama GreenVille Estate sangat mudah dan transparan. Konsultannya sangat membantu dan profesional. Saya sangat puas dengan hunian baru kami!"</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmad Rizki" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Ahmad Rizki</h4>
+                                    <p class="text-gray-500 text-sm">Pengusaha</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="text-accent">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="ml-auto text-gray-400 text-sm">2 bulan yang lalu</div>
+                            </div>
+                            <p class="text-gray-600 mb-6">"Saya sangat terkesan dengan kualitas bangunan dan perhatian terhadap detail di setiap properti GreenVille Estate. Lingkungannya juga sangat asri dan aman untuk anak-anak."</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Siti Nurhaliza" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Siti Nurhaliza</h4>
+                                    <p class="text-gray-500 text-sm">Dokter</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="text-accent">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="ml-auto text-gray-400 text-sm">3 bulan yang lalu</div>
+                            </div>
+                            <p class="text-gray-600 mb-6">"Investasi properti terbaik yang pernah saya lakukan. Dalam 2 tahun, nilai properti saya sudah naik 20%. Lokasi strategis dan fasilitas lengkap menjadi nilai plus."</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Budi Santoso" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Budi Santoso</h4>
+                                    <p class="text-gray-500 text-sm">Investor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="text-accent">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="ml-auto text-gray-400 text-sm">1 bulan yang lalu</div>
+                            </div>
+                            <p class="text-gray-600 mb-6">"Pelayanan after sales yang luar biasa. Setelah 1 tahun tinggal, ada beberapa masalah kecil dan tim maintenance langsung datang untuk memperbaiki. Sangat profesional!"</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Dewi Anggraini" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Dewi Anggraini</h4>
+                                    <p class="text-gray-500 text-sm">Arsitek</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slider Controls -->
+                <button id="prevTestimonial" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-primary hover:text-white transition-custom z-10">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="nextTestimonial" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-primary hover:text-white transition-custom z-10">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Slider Dots -->
+                <div class="flex justify-center mt-8" id="testimonialDots">
+                    <button class="w-3 h-3 rounded-full bg-primary mx-1 active"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300 mx-1"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300 mx-1"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300 mx-1"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Siap Menemukan Hunian Impian Anda?</h2>
+            <p class="text-white text-opacity-90 max-w-2xl mx-auto mb-8">Konsultasikan kebutuhan properti Anda dengan tim ahli kami dan dapatkan penawaran terbaik</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="properties.html" class="bg-white text-primary px-8 py-3 rounded-full hover:bg-light transition-custom font-medium">Lihat Katalog</a>
+                <a href="contact.html" class="bg-secondary text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-custom font-medium">Hubungi Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="text-white font-bold text-2xl">GreenVille</div>
+                        <div class="text-secondary font-light text-xl">Estate</div>
+                    </div>
+                    <p class="text-gray-400 mb-6">Mewujudkan hunian impian keluarga Indonesia dengan properti berkualitas dan lingkungan yang nyaman.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Tautan Cepat</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-custom">Beranda</a></li>
+                        <li><a href="properties.html" class="text-gray-400 hover:text-white transition-custom">Properti</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-custom">Tentang Kami</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-custom">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Kontak Kami</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-secondary"></i>
+                            <span class="text-gray-400">Jl. Gatot Subroto No. 123, Jakarta Selatan, Indonesia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-secondary"></i>
+                            <span class="text-gray-400">+62 21 1234 5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-secondary"></i>
+                            <span class="text-gray-400">info@greenville-estate.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-secondary"></i>
+                            <span class="text-gray-400">Senin - Sabtu: 09:00 - 17:00</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Berlangganan</h3>
+                    <p class="text-gray-400 mb-4">Dapatkan informasi terbaru tentang properti dan promo eksklusif</p>
+                    <form class="mb-4">
+                        <div class="flex">
+                            <input type="email" placeholder="Email Anda" class="w-full px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <button type="submit" class="bg-primary px-4 py-2 rounded-r-lg hover:bg-secondary transition-custom">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <p class="text-gray-500 text-sm">Dengan berlangganan, Anda menyetujui <a href="#" class="text-secondary hover:text-white">Kebijakan Privasi</a> kami</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2023 GreenVille Estate. Hak Cipta Dilindungi.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-500 hover:text-white text-sm transition-custom">Syarat & Ketentuan</a>
+                        <a href="#" class="text-gray-500 hover:text-white text-sm transition-custom">Kebijakan Privasi</a>
+                        <a href="#" class="text-gray-500 hover:text-white text-sm transition-custom">Peta Situs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/slider.js"></script>
+</body>
+</html>
